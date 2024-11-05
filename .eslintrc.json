@@ -1,0 +1,4 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": ["security", "no-secrets", "jsx-a11y"]
+}

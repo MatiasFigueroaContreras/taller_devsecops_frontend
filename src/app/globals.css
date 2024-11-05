@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Norican&family=Rubik:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik';
+    font-style: normal;
+    animation: fade-in 0.2s ease-in-out;
+}
+
+body {
+    background-color: #DFE0DF;
+}
+
+.app {
+    display: grid;
+    justify-items: center;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

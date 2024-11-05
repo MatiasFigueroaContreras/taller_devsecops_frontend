@@ -1,0 +1,19 @@
+services:
+  nginx:
+    container_name: nginx-proxy
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+  app:
+    container_name: frontend-app
+    image: frontend_milkstgo/app:staging
+    restart: always #change if you don't want your container restarting
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 3000:3000

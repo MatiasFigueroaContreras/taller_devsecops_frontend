@@ -1,0 +1,26 @@
+{
+  "name": "milkstgo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:html": "eslint src --ext .js,.jsx --format html -o reportes/reporte.html"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "next": "15.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "15.0.2",
+    "eslint-formatter-html": "^2.7.2",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-no-secrets": "^1.0.2",
+    "eslint-plugin-security": "^3.0.1"
+  }
+}
