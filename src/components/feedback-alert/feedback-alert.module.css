@@ -7,7 +7,7 @@
     padding: 0 20px 0 20px;
     border-radius: 8px;
     border: 1px solid #075D23;
-    color: #075D23;
+    color: black;
 }
 
 .error-alert {
@@ -31,5 +31,5 @@
     padding: 0 20px 0 20px;
     border-radius: 8px;
     border: 1px solid #008EBB;
-    color: #008EBB;
+    color: black;
 }

@@ -1,5 +1,5 @@
-import "./globals.css";
-import Navbar from "@/components/navbar/Navbar";
+import SessionAuthProvider from "@/context/SessionAuthProvider";
+import "./globals.css"
 
 export const metadata = {
     title: "MilkStgo",
@@ -26,10 +26,9 @@ const RootLayout = ({ children }) => {
                 sizes="16x16"
                 href="/images/favicon-16x16.png"
             />
-            <body>
-                <Navbar />
-                <main className="app">{children}</main>
-            </body>
+            <SessionAuthProvider>
+                <body>{children}</body>
+            </SessionAuthProvider>
         </html>
     );
 };

@@ -1,11 +1,11 @@
-import axios from "axios";
+import { axiosAuth } from "@/lib/axios";
 
-const LABORTORIO_LECHE_API_URL = `${process.env.NEXT_PUBLIC_API_URL}/laboratorio-leche`;
+const LABORTORIO_LECHE_API_ENDPOINT = "/laboratorio-leche";
 
 class LaboratorioLecheService {
     async import(file, year, mes, quincena) {
-        return axios.post(
-            LABORTORIO_LECHE_API_URL + "/importar",
+        return axiosAuth.post(
+            LABORTORIO_LECHE_API_ENDPOINT + "/importar",
             {
                 file: file,
                 year: year,
@@ -19,4 +19,6 @@ class LaboratorioLecheService {
     }
 }
 
-export default new LaboratorioLecheService();
+const laboratorioLecheService = new LaboratorioLecheService();
+
+export default laboratorioLecheService;

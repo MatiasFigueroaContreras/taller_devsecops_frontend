@@ -29,7 +29,6 @@ export default function ProveedoresPage() {
                     setAlertType(feedbackTypes.Informative);
                 }
             } catch (error) {
-                console.log(error);
                 setProveedores([]);
                 setFeedback(
                     "Ocurrio un error al intentar buscar los proveedores"

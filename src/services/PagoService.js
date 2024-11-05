@@ -1,11 +1,11 @@
-import axios from "axios";
+import { axiosAuth } from "@/lib/axios";
 
-const PAGO_API_URL = `${process.env.NEXT_PUBLIC_API_URL}/pagos`;
+const PAGO_API_ENDPOINT = "/pagos";
 
 class PagoService {
     async calcular(year, mes, quincena) {
-        return axios.post(
-            PAGO_API_URL + "/calcular",
+        return axiosAuth.post(
+            PAGO_API_ENDPOINT + "/calcular",
             {
                 year: year,
                 mes: mes,
@@ -18,11 +18,11 @@ class PagoService {
     }
 
     async getAll() {
-        return axios.get(PAGO_API_URL);
+        return axiosAuth.get(PAGO_API_ENDPOINT);
     }
 
     async getAllByQuincena(year, mes, quincena) {
-        return axios.get(PAGO_API_URL + "/byquincena", {
+        return axiosAuth.get(PAGO_API_ENDPOINT + "/byquincena", {
             headers: { "Content-Type": "multipart/form-data" },
             params: {
                 year: year,
@@ -33,4 +33,6 @@ class PagoService {
     }
 }
 
-export default new PagoService();
+const pagoService= new PagoService();
+
+export default pagoService;

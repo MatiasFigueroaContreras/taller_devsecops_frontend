@@ -1,11 +1,11 @@
-import axios from "axios";
+import { axiosAuth } from "@/lib/axios";
 
-const ACOPIO_LECHE_API_URL = `${process.env.NEXT_PUBLIC_API_URL}/acopios-leche`;
+const ACOPIO_LECHE_API_ENDPOINT = "/acopios-leche";
 
 class AcopioLecheService {
     async import(file, year, mes, quincena) {
-        return axios.post(
-            ACOPIO_LECHE_API_URL + "/importar",
+        return axiosAuth.post(
+            ACOPIO_LECHE_API_ENDPOINT + "/importar",
             {
                 file: file,
                 year: year,
@@ -19,4 +19,6 @@ class AcopioLecheService {
     }
 }
 
-export default new AcopioLecheService();
+const acopioLecheService = new AcopioLecheService();
+
+export default acopioLecheService;

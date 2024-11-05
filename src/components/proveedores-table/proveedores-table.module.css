@@ -49,6 +49,19 @@ td {
     padding: 18px 25px;
 }
 
+.proveedores-table tbody tr td:nth-child(5) {
+    text-align: center;
+}
+
 .proveedores-table tbody tr:nth-of-type(even) {
     background-color: #F3F3F3;
+}
+
+.editar {
+    cursor: pointer;
+    border: none;
+    background-color: #ABABAB;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }

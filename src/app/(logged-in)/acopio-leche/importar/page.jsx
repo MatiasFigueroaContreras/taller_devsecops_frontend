@@ -2,7 +2,7 @@
 
 import Title from "@/components/title/Title";
 import UploadCard from "@/components/upload-zone/UploadZone";
-import AcopioLecheService from "@/services/AcopioLecheService";
+import acopioLecheService from "@/services/AcopioLecheService";
 import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import { feedbackTypes } from "@/components/feedback-alert/FeedbackAlert";
 import { useState } from "react";
@@ -16,7 +16,7 @@ export default function ImportarAcopioPage() {
         setIsSubmitting(true);
         setFeedback("");
         try {
-            await AcopioLecheService.import(
+            await acopioLecheService.import(
                 data.file,
                 data.year,
                 data.month,
@@ -31,7 +31,7 @@ export default function ImportarAcopioPage() {
                 setFeedback("Ocurrió un error al intentar subir los datos");
                 setIsSubmitting(false);
             } else {
-                setFeedback(error.response.data);
+                setFeedback(error.response.data.message);
                 setIsSubmitting(false);
             }
         }

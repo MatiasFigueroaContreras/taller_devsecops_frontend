@@ -30,25 +30,19 @@ export default function RegisterPage() {
         setFeedback("");
         try {
             await ProveedorService.create(codigo, nombre, categoria, retencion);
-            setTimeout(() => {
-                setFeedback("Proveedor registrado correctamente!");
-                setIsSubmitting(false);
-            }, 500);
+            setFeedback("Proveedor registrado correctamente!");
+            setIsSubmitting(false);
             setAlertType(feedbackTypes.Success);
         } catch (error) {
             setAlertType(feedbackTypes.Error);
             if (error.response === undefined || error.response.status >= 500) {
-                setTimeout(() => {
-                    setFeedback(
-                        "Ocurrió un error al intentar registrar el proveedor"
-                    );
-                    setIsSubmitting(false);
-                }, 500);
+                setFeedback(
+                    "Ocurrió un error al intentar registrar el proveedor"
+                );
+                setIsSubmitting(false);
             } else {
-                setTimeout(() => {
-                    setFeedback(error.response.data);
-                    setIsSubmitting(false);
-                }, 500);
+                setFeedback(error.response.data.message);
+                setIsSubmitting(false);
             }
         }
     };

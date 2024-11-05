@@ -5,13 +5,14 @@ export default function SelectField({
     placeholder,
     options = [],
     onChange,
+    defaultValue,
 }) {
     return (
         <select
             name={name}
             onChange={onChange}
             className={styles.select}
-            defaultValue=""
+            defaultValue={defaultValue ? defaultValue : ""}
             required
         >
             <option value="" disabled>

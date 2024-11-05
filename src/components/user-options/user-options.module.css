@@ -1,0 +1,80 @@
+.user {
+    position: absolute;
+    right: 4vw;
+    top: 3.5vh;
+    color: white;
+    display: inline-block;
+}
+
+.user-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    fill: white;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-options {
+    list-style: none;
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #120D0E;
+    min-width: 180px;
+    border-radius: 6px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    padding: 16px 18px 4px 12px;
+    z-index: 1;
+}
+
+.user-options li {
+    margin-bottom: 14px;
+}
+
+.user-options li .user-option {
+    display: flex;
+    width: 100%;
+    font-size: 15px !important;
+    cursor: pointer;
+}
+
+.user-options li .user-option:after {
+    display: none;
+}
+
+.user-options li .user-option:before {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 0;
+    margin-right: 5px;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.user-options li .user-option:hover::before {
+    height: 16px;
+    align-self: center;
+    background-color: white;
+    transform: scale(1);
+}
+
+.user:hover .user-options {
+    display: block;
+}
+
+.user-option-icon {
+    margin-left: 6px;
+}
+
+.user-profile {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    color: #FFCBA6;
+    font-weight: 500;
+    margin-bottom: 14px;
+}

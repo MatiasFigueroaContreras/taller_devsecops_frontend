@@ -2,7 +2,7 @@
 
 import Title from "@/components/title/Title";
 import UploadCard from "@/components/upload-zone/UploadZone";
-import LaboratorioLecheService from "@/services/LaboratorioLecheService";
+import laboratorioLecheService from "@/services/LaboratorioLecheService";
 import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import { feedbackTypes } from "@/components/feedback-alert/FeedbackAlert";
 import { useState } from "react";
@@ -16,7 +16,7 @@ export default function ImportarLaboratorioLeche() {
         setIsSubmitting(true);
         setFeedback("");
         try {
-            await LaboratorioLecheService.import(
+            await laboratorioLecheService.import(
                 data.file,
                 data.year,
                 data.month,
@@ -32,7 +32,7 @@ export default function ImportarLaboratorioLeche() {
                 setFeedback("Ocurrió un error al intentar subir los datos");
                 setIsSubmitting(false);
             } else {
-                setFeedback(error.response.data);
+                setFeedback(error.response.data.message);
                 setIsSubmitting(false);
             }
         }

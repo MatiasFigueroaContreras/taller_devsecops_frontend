@@ -3,6 +3,7 @@
 import styles from "./navbar.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import UserOptions from "../user-options/UserOptions";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -137,6 +138,7 @@ export default function Navbar() {
                     </li>
                 </ul>
             </div>
+            <UserOptions />
         </header>
     );
 }

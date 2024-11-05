@@ -5,7 +5,7 @@ import styles from "./calcular-pagos.module.css";
 import SelectQuincena from "@/components/select-quincena/SelectQuincena";
 import Title from "@/components/title/Title";
 import PagosTable from "@/components/pagos-table/PagosTable";
-import PagoService from "@/services/PagoService";
+import pagoService from "@/services/PagoService";
 import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import { feedbackTypes } from "@/components/feedback-alert/FeedbackAlert";
 import { useState } from "react";
@@ -29,7 +29,7 @@ export default function CalcularPagosPage() {
         setFeedback("");
         setLoading(true);
         try {
-            const resCalcular = await PagoService.calcular(
+            const resCalcular = await pagoService.calcular(
                 quincena.year,
                 quincena.month,
                 quincena.fortnight
@@ -40,7 +40,7 @@ export default function CalcularPagosPage() {
             setIsSubmitting(false);
             setLoading(false);
 
-            const resPagos = await PagoService.getAllByQuincena(
+            const resPagos = await pagoService.getAllByQuincena(
                 quincena.year,
                 quincena.month,
                 quincena.fortnight
@@ -57,7 +57,7 @@ export default function CalcularPagosPage() {
                 setIsSubmitting(false);
                 setLoading(false);
             } else {
-                setFeedback(error.response.data);
+                setFeedback(error.response.data.message);
                 setIsSubmitting(false);
                 setLoading(false);
             }

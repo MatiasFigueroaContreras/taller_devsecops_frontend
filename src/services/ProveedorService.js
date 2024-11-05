@@ -1,11 +1,26 @@
-import axios from "axios";
+import { axiosAuth } from "@/lib/axios";
 
-const PROVEEDOR_API_URL = `${process.env.NEXT_PUBLIC_API_URL}/proveedores`;
+const PROVEEDORES_API_ENDPOINT = "/proveedores";
 
 class ProveedorService {
     async create(codigo, nombre, categoria, retencion) {
-        return axios.post(
-            PROVEEDOR_API_URL,
+        return axiosAuth.post(
+            PROVEEDORES_API_ENDPOINT,
+            {
+                codigo: codigo,
+                nombre: nombre,
+                categoria: categoria,
+                retencion: retencion,
+            },
+            {
+                headers: { "Content-Type": "multipart/form-data" },
+            }
+        );
+    }
+
+    async update(id, codigo, nombre, categoria, retencion) {
+        return axiosAuth.put(
+            PROVEEDORES_API_ENDPOINT + "/" + id,
             {
                 codigo: codigo,
                 nombre: nombre,
@@ -19,7 +34,7 @@ class ProveedorService {
     }
 
     async getAll() {
-        return axios.get(PROVEEDOR_API_URL);
+        return axiosAuth.get(PROVEEDORES_API_ENDPOINT);
     }
 }
 

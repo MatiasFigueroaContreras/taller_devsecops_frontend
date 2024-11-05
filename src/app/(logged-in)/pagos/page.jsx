@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import PagosTable from "@/components/pagos-table/PagosTable";
 import Title from "@/components/title/Title";
-import PagoService from "@/services/PagoService";
+import pagoService from "@/services/PagoService";
 import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import Loading from "./loading";
 import { feedbackTypes } from "@/components/feedback-alert/FeedbackAlert";
@@ -19,8 +19,7 @@ export default function PagosPage() {
         setAlertType("");
         const fetchPagos = async () => {
             try {
-                const response = await PagoService.getAll();
-                console.log(response);
+                const response = await pagoService.getAll();
                 if (response.data && response.data.length > 0) {
                     setPagos(response.data);
                 } else {
