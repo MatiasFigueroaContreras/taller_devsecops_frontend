@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import ProveedoresTable from "@/components/proveedores-table/ProveedoresTable";
 import Title from "@/components/title/Title";
-import ProveedorService from "@/services/ProveedorService";
+import proveedorService from "@/services/ProveedorService";
 import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import { feedbackTypes } from "@/components/feedback-alert/FeedbackAlert";
 import Loading from "./loading";
+import ValidateDelete from "@/components/validate-delete/ValidateDelete";
 
 export default function ProveedoresPage() {
     const [proveedores, setProveedores] = useState([]);
@@ -15,10 +16,15 @@ export default function ProveedoresPage() {
     const [alertType, setAlertType] = useState("");
     const [loading, setLoading] = useState(true);
 
+    const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+    const [proveedorToDelete, setProveedorToDelete] = useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [reload, setReload] = useState(false);
+
     useEffect(() => {
         const fetchProveedores = async () => {
             try {
-                const response = await ProveedorService.getAll();
+                const response = await proveedorService.getAll();
                 if (response.data && response.data.length > 0) {
                     setProveedores(response.data);
                     setFeedback("");
@@ -39,7 +45,27 @@ export default function ProveedoresPage() {
         };
 
         fetchProveedores();
-    }, []);
+    }, [reload]);
+
+    const onDeleteProveedorClick = (proveedor) => {
+        setIsOpenDeleteModal(true);
+        setProveedorToDelete(proveedor);
+    };
+
+    const onValidateDelete = async () => {
+        setIsDeleting(true);
+        try {
+            await proveedorService.delete(proveedorToDelete.id);
+            setIsOpenDeleteModal(false);
+            setReload(!reload);
+        }
+        catch (error) {
+            setFeedback("Ocurrio un error al intentar eliminar el proveedor");
+            setAlertType(feedbackTypes.Error);
+            setIsOpenDeleteModal(false);
+        }
+        setIsDeleting(false);
+    }
 
     return (
         <>
@@ -51,7 +77,19 @@ export default function ProveedoresPage() {
                     {feedback ? (
                         <FeedbackAlert feedback={feedback} type={alertType} />
                     ) : (
-                        <ProveedoresTable proveedores={proveedores} />
+                        <>
+                            <ProveedoresTable
+                                proveedores={proveedores}
+                                onDelete={onDeleteProveedorClick}
+                            />
+                            <ValidateDelete
+                                isOpen={isOpenDeleteModal}
+                                name={`el proveedor ${proveedorToDelete?.codigo}`}
+                                onClose={() => setIsOpenDeleteModal(false)}
+                                onDelete={onValidateDelete}
+                                isDeleting={isDeleting}
+                            />
+                        </>
                     )}
                 </>
             )}

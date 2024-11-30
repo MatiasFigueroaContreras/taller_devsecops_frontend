@@ -36,6 +36,12 @@ class ProveedorService {
     async getAll() {
         return axiosAuth.get(PROVEEDORES_API_ENDPOINT);
     }
+
+    async delete(id) {
+        return axiosAuth.delete(PROVEEDORES_API_ENDPOINT + "/" + id);
+    }
 }
 
-export default new ProveedorService();
+const proveedorService = new ProveedorService();
+
+export default proveedorService;

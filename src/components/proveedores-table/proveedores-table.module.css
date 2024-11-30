@@ -57,6 +57,13 @@ td {
     background-color: #F3F3F3;
 }
 
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 .editar {
     cursor: pointer;
     border: none;
@@ -64,4 +71,18 @@ td {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+.editar:hover {
+    transform: scale(1.1);
+}
+
+.delete {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+}
+
+.delete:hover {
+    transform: scale(1.1);
 }

@@ -5,7 +5,7 @@ import styles from "./register-page.module.css";
 import Title from "@/components/title/Title";
 import InputField from "@/components/input-field/InputField";
 import SelectField from "@/components/select-field/SelectField";
-import ProveedorService from "@/services/ProveedorService";
+import proveedorService from "@/services/ProveedorService";
 import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import { feedbackTypes } from "@/components/feedback-alert/FeedbackAlert";
 import { useState } from "react";
@@ -29,7 +29,7 @@ export default function RegisterPage() {
         setIsSubmitting(true);
         setFeedback("");
         try {
-            await ProveedorService.create(codigo, nombre, categoria, retencion);
+            await proveedorService.create(codigo, nombre, categoria, retencion);
             setFeedback("Proveedor registrado correctamente!");
             setIsSubmitting(false);
             setAlertType(feedbackTypes.Success);

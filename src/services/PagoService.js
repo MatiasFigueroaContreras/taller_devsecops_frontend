@@ -33,6 +33,6 @@ class PagoService {
     }
 }
 
-const pagoService= new PagoService();
+const pagoService = new PagoService();
 
 export default pagoService;
