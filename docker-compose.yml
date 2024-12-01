@@ -10,10 +10,13 @@ services:
     depends_on:
       - app
   app:
+    build: .
     container_name: frontend-app
     image: frontend_milkstgo/app:staging
     restart: always #change if you don't want your container restarting
     environment:
       - NODE_ENV=production
+    env_file:
+      - .env
     ports:
       - 3000:3000
