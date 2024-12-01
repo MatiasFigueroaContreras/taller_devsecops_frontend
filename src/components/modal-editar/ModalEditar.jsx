@@ -10,10 +10,6 @@ import FeedbackAlert from "@/components/feedback-alert/FeedbackAlert";
 import ProveedorService from "@/services/ProveedorService";
 
 export default function ModalEditar({ proveedor, onClose }) {
-    if (!proveedor) {
-        return null;
-    }
-
     const categorias = ["A", "B", "C", "D"];
     const retenciones = ["Si", "No"];
 
