@@ -12,7 +12,7 @@ services:
   app:
     build: .
     container_name: frontend-app
-    image: frontend_milkstgo/app:staging
+    image: frontend_milkstgo/app
     restart: always #change if you don't want your container restarting
     environment:
       - NODE_ENV=production
